@@ -1,0 +1,11 @@
+*.tmp
+*.temp
+*.pyc
+__pycache__/
+venv/
+env/
+.idea/
+*.iml
+*.idea/
+*.log
+*~

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "hh-psql-project"
+version = "0.1.0"
+description = ""
+authors = ["rusanov8 <rusanov.egor@bk.ru>"]
+readme = "README.md"
+packages = [{include = "hh_psql_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+api = "^0.0.7"
+psycopg2-binary = "^2.9.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

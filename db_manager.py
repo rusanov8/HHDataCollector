@@ -17,6 +17,8 @@ class DBManager:
                         inner join vacancies using(employer_id)
                         group by company_name
                         """)
+        companies_and_vacancies = self.cur.fetchall()
+        return companies_and_vacancies
 
     def get_all_vacancies(self):
         """Получает список всех вакансий с указанием названия компании,
@@ -27,6 +29,9 @@ class DBManager:
                         from vacancies 
                         inner join employers using(employer_id)
                         """)
+
+        all_vacancies = self.cur.fetchall()
+        return all_vacancies
 
     def get_avg_salary(self):
         """Получает среднюю зарплату по вакансиям"""
@@ -50,6 +55,9 @@ class DBManager:
                         order by salary desc
                         """)
 
+        higher_salary_vacancies = self.cur.fetchall()
+        return higher_salary_vacancies
+
     def get_vacancies_with_keyword(self, keyword):
         """Получает список всех вакансий по ключевому слову"""
         self.cur.execute(f"""
@@ -59,9 +67,14 @@ class DBManager:
                         or requirements like '%{keyword}%'
                         """)
 
+        keyword_vacancies = self.cur.fetchall()
+        return keyword_vacancies
+
     def close(self):
         # Метод для коммита изменений и закрытия подключения к БД
         self.conn.commit()
         self.cur.close()
         self.conn.close()
+
+
 
